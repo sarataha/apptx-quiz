@@ -1,6 +1,7 @@
+# manifest.yml
 ---
 applications:
 - name: testApp
-  memory: 512M 
+  memory: 512M
   instances: 1
   buildpack: python_buildpack
