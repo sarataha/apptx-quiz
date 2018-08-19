@@ -1,13 +1,18 @@
-FROM python
+FROM ubuntu:latest
 
-RUN pip install gunicorn json-logging-py flask pymysql SQLAlchemy flask_sqlalchemy flask_login flask_bcrypt
+MAINTAINER Sara ElZayat "st.elzayat@gmail.com"
 
-COPY logging.conf /logging.conf
-COPY gunicorn.conf /gunicorn.conf
+RUN apt-get update && \
+  apt-get install -y python3 mariadb-server mariadb-client && \
+  mysql_secure_installation
+
+RUN apt-get install -y python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY testApp.py /
 
 EXPOSE 5000
 
-ENTRYPOINT ["/usr/local/bin/gunicorn", "--config", "/gunicorn.conf", "--log-config", "/logging.conf", "-b", ":5000", "testApp:app"]
-
+ENTRYPOINT ["/usr/local/bin/gunicorn", "-b", ":5000", "testApp:app"]

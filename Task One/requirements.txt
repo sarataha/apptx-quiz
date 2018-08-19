@@ -1,0 +1,8 @@
+gunicorn
+json-logging-py
+flask
+pymysql
+SQLAlchemy
+flask_sqlalchemy
+flask_login
+flask_bcrypt
