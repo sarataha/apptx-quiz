@@ -12,7 +12,7 @@ RUN apt-get install -y python3-pip python3-dev build-essential libssl-dev libffi
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-COPY app/testApp.py /
+COPY testApp.py /
 
 EXPOSE 5000
 
