@@ -2,14 +2,15 @@ FROM ubuntu:latest
 
 MAINTAINER Sara ElZayat "st.elzayat@gmail.com"
 
-RUN apt-get update && \
-  apt-get install -y python3 mariadb-server mariadb-client && \
-  mysql_secure_installation
+RUN apt-get update -y && \
+  apt-get install -y --no-install-recommends apt-utils
+
+RUN apt-get install -y python3
 
 RUN apt-get install -y python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY testApp.py /
 
