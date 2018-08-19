@@ -5,3 +5,5 @@ applications:
   memory: 512M
   instances: 1
   buildpack: python_buildpack
+  services:
+    - testapp-mysql-01

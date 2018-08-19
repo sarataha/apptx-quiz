@@ -3,9 +3,8 @@ FROM ubuntu:latest
 MAINTAINER Sara ElZayat "st.elzayat@gmail.com"
 
 RUN apt-get update && \
-  apt-get install -y python3 mariadb-server mariadb-client && \
-  mysql_secure_installation
-
+  apt-get install -y python3 mariadb-server mariadb-client
+  
 RUN apt-get install -y python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 
 COPY requirements.txt .
